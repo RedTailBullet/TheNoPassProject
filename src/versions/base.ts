@@ -10,8 +10,8 @@ export abstract class BaseVersion implements GeneratorVersion {
 
   abstract getPassword (masterKey: string | GetPasswordOptions, length?: number, domain?: string, username?: string): string
 
-  private getKey (masterKey: string, domain: string, username?: string) {
-    return crypto.HmacSHA256(`${domain}${username || ''}`, masterKey)
+  protected getKey (domain: string, username?: string) {
+    return crypto.SHA256(`${domain}${username || ''}`)
   }
 
   abstract getMasterKey (masterPassword: string): string

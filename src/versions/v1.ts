@@ -21,7 +21,7 @@ export class Version1 extends BaseVersion {
     if (_.isEmpty(domain))
       throw ERROR_MESSAGES.LACKING_DOMAIN
 
-    let password = Tools.stringXOR(crypto.SHA256(`${domain}${username || ''}`).toString(crypto.enc.Utf8), key)
+    let password = Tools.stringXOR(crypto.SHA256(this).toString(crypto.enc.Utf8), key)
     return Tools.foldPasswordToLength(password, length)
   }
 

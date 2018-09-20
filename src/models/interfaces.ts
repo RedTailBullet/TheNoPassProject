@@ -1,6 +1,4 @@
 export interface Entry {
-  domain?: string
-  username?: string
   passwordVersion: number
 }
 
