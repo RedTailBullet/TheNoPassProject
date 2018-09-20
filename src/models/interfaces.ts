@@ -40,9 +40,9 @@ export interface GeneratorConstructor {
 
 export interface GeneratorVersion {
   getPassword: GetPasswordFunc
-  getMasterKey: GetKeyFunc
+  getMasterKey: GetMasterKeyFunc
 }
 
 export interface GeneratorList {
-  [version: number]: GeneratorVersion
+  [version: number]: any
 }

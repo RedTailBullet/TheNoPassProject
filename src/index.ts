@@ -1,12 +1,16 @@
 import { EntryLists, GeneratorVersion } from './models/interfaces';
+import { generatorList } from './versions';
+import { EntryListManger } from './utils/entry_lists_manager';
 
 export class PassGen {
-  private static masterKey: string
-  private static entryLists: EntryLists
-  private static generator: GeneratorVersion
+  private readonly masterKey: string
+  private readonly entryListManager: EntryListManger
+  private readonly generator: GeneratorVersion
 
-  public static init (masterPassword: string, version: number = 1) {
-
+  constructor(masterPassword: string, version: number) {
+    this.generator = generatorList[version]
+    this.masterKey = this.generator.getMasterKey(masterPassword)
+    this.entryListManager = new EntryListManger(version)
   }
 
   private static getMasterKey (masterPassword: string, version: number = 1) {
